@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <h1><%= @room.title %></h1>
+      <ul>
+        <li><%= @room.city %> - <%= @room.address %></li>
+        <li><%= @room.capacity %></li>
+        <li><%= @room.price%>€ par nuit</li>
+        <li><%= @room.average_rating.nil? ? "No rating yet" : "#{@room.average_rating} étoiles" %> </li>
+      </ul>
+    </div>
+  </div>
+</div>
