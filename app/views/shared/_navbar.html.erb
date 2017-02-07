@@ -7,13 +7,6 @@
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
-    <!-- Search form -->
-    <form action="" class="navbar-wagon-search">
-      <input type="text" class="navbar-wagon-search-input" placeholder="Search something">
-      <button type="submit" class="navbar-wagon-search-btn">
-        <i class="fa fa-search"></i>
-      </button>
-    </form>
 
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
@@ -38,7 +31,7 @@
             </li>
             <li>
               <%= link_to users_path do %>
-                <i class="fa fa-home"></i>  <%= "Your rooms" %>
+                <i class="fa fa-home"></i>  <%= "My rooms" %>
               <% end %>
             </li>
             <li>
