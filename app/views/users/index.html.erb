@@ -1,0 +1,20 @@
+<div class="container">
+<h1>You have <%= current_user.rooms.count %> rooms </h1>
+  <div class="row">
+  <% current_user.rooms.each do |room| %>
+    <div class="col-xs-12 col-sm-4">
+      <div class="card">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempixel.com/400/300/city');">
+          <div class="card-category"><%= room.city%></div>
+          <div class="card-description">
+            <h2><%= room.title%></h2>
+            <p><%= room.capacity%> travelers - <%= room.price%>€ /night - <%= room.average_rating.nil? ? "No rating yet" : "#{room.average_rating} stars" %></p>
+          </div>
+          <%= link_to " ", room_path(room), class:"card-link" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>
+
