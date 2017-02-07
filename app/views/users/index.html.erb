@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container padded-xs">
 <h1>You have <%= current_user.rooms.count %> rooms </h1>
   <div class="row">
   <% current_user.rooms.each do |room| %>
@@ -18,3 +18,22 @@
   </div>
 </div>
 
+<div id="map"></div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+      });
+    });
+  <% end %>
+<% end %>
