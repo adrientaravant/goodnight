@@ -3,7 +3,12 @@ class RoomsController < ApplicationController
   before_action :set_room, only: [:show]
 
   def show
+    @room = Room.find(params[:id])
 
+    @hash = Gmaps4rails.build_markers(@room) do |room, marker|
+      marker.lat room.latitude
+      marker.lng room.longitude
+    end
   end
 
   def new
