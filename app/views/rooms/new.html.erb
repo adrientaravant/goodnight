@@ -6,8 +6,8 @@
         <%= f.error_notification %>
 
         <%= f.input :title %>
-        <%= f.input :city %>
         <%= f.input :address %>
+        <%= f.input :city %>
         <%= f.input :capacity %>
         <%= f.input :price %>
 
@@ -16,3 +16,6 @@
     </div>
   </div>
 </div>
+<%= content_for(:after_js) do %>
+  <script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyDP6EcPKsYsv2Yv_8QkBDoO72GJtUF01KY"></script>
+<% end %>
