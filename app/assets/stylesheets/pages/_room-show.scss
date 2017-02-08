@@ -9,3 +9,37 @@
   align-items: center;
   justify-content: center;
 }
+.card-host {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 2em 0em 2em 0em;
+}
+.card-host-name {
+  margin-right: 40px;
+}
+.card-host-name img {
+  margin-bottom: 10px;
+}
+.card-host-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100px;
+}
+.card-host-details h1 {
+  font-size: 25px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.card-host-address {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.card-host-address p {
+  margin: 0;
+}
+.card-host-rating {
+  margin-left: 10px;
+}

@@ -1,17 +1,48 @@
-<div class="banner-room" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('http://lorempixel.com/1440/800/city');">
-
-</div>
+<div class="banner-room" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('http://lorempixel.com/1440/800/city');"></div>
 
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-      <h1><%= @room.title %></h1>
-      <ul>
-        <li><%= @room.city %> - <%= @room.address %></li>
-        <li><%= @room.capacity %> travelers</li>
-        <li><%= @room.price%>€ par nuit</li>
-        <li><%= @room.average_rating.nil? ? "No rating yet" : "#{@room.average_rating} étoiles" %> </li>
-      </ul>
+    <div class="col-xs-12 col-sm-8 col-sm-offset-1">
+      <div class="card-host">
+        <div class="card-host-name text-center">
+          <img src="http://placehold.it/50/50" alt="" class="img-circle">
+          <p><%= @room.user.first_name %></p>
+        </div>
+        <div class="card-host-details">
+          <h1><%= @room.title %></h1>
+          <div class="card-host-address">
+            <p><%= @room.address %></p>
+            <div class="card-host-rating">
+              <% @room.average_rating.times do %>
+              <i class="fa fa-star" style="color:#008489" aria-hidden="true"></i>
+              <%end%>
+              <% (5 - @room.average_rating).times do %>
+              <i class="fa fa-star" style="color:grey" aria-hidden="true"></i>
+              <%end%>
+            </div>
+          </div>
+          <div class="card-host-capacity">
+            <i class="fa fa-user-o" style="color:#767676" aria-hidden="true"></i>
+            <%= @room.capacity %> travelers
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-2 col-sm-offset-1">
+      <div class="card-book-form">
+        <%= simple_form_for(@booking) do |f| %>
+          <%= f.error_notification %>
+
+          <%= f.input :title %>
+          <%= f.input :address %>
+          <%= f.input :city %>
+          <%= f.input :capacity %>
+          <%= f.input :price %>
+
+          <%= f.button :submit, class:"btn btn-success btn-lg" %>
+        <% end %>
+
+      </div>
     </div>
   </div>
 </div>
